@@ -16,17 +16,14 @@ class CurrencyTextFieldsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        final isEng = isEnglish();
         return Row(
           children: [
             Expanded(
               child: CustomDateTextField(
                 controller: context.read<HomeCubit>().startDateController,
-                englishLabel: 'start date',
-                arabicLabel: 'تاريخ البداية',
-                englishHint: 'Enter start date',
-                arabicHint: 'ادخل تاريخ البداية',
-                isEnglish: isEng,
+                labelText: isEnglish() ? 'Start Date' : 'تاريخ البداية',
+                hintText:
+                    isEnglish() ? 'Enter start date' : 'ادخل تاريخ البداية',
                 onTap: () => _showDatePicker(context),
               ),
             ),
@@ -34,11 +31,8 @@ class CurrencyTextFieldsWidget extends StatelessWidget {
             Expanded(
               child: CustomDateTextField(
                 controller: context.read<HomeCubit>().endDateController,
-                englishLabel: 'end date',
-                arabicLabel: 'تاريخ النهاية',
-                englishHint: 'Enter end date',
-                arabicHint: 'ادخل تاريخ النهاية',
-                isEnglish: isEng,
+                labelText: isEnglish() ? 'End Date' : 'تاريخ النهاية',
+                hintText: isEnglish() ? 'Enter end date' : 'ادخل تاريخ النهاية',
                 onTap: () => _showDatePicker(context),
               ),
             ),
